@@ -1,55 +1,54 @@
 function replaceText() {
     let text = document.getElementById('inputText').value;
 
-    // 置換ルールの設定（順番を調整）
-    const replacements = {
-        'p\'m': 'p\'ⁿ',   // 先にp'mを置換
-        't\'n': 't\'ⁿ',   // 先にt'nを置換
-        'k\'n': 'k\'ⁿ',   // 先にk'nを置換
-        'hng': 'ŋ̊',      // 先にhngを置換
-        'pm': 'pⁿ',       // 他の置換
-        'bm': 'bⁿ',
-        'hm': 'm̥',
-        'f': 'ɸ',
-        'v': 'β',
-        'tn': 'tⁿ',
-        'dn': 'dⁿ',
-        'hn': 'n̥',
-        'hr': 'r̥',
-        'hl': 'l̥',
-        'c': 't͡s',
-        'dz': 'd͡z',
-        'ch': 't͡ʃ',
-        'j': 'd͡ʒ',
-        'sh': 'ʃ',
-        'zh': 'ʒ',
-        'kn': 'kⁿ',
-        'gn': 'gⁿ',
-        'ng': 'ŋ',
-        'gh': 'ɣ',
-        'q': 'ʔ',
-        'ia': 'ja',
-        'ai': 'aj',
-        'ua': 'wa',
-        'au': 'aw',
-        'e': 'ə',
-        'ie': 'jə',
-        'ei': 'əj',
-        'ue': 'wə',
-        'eu': 'əw',
-        'iú': 'ju',
-        'úi': 'uj',
-        'uí': 'wi',
-        'íu': 'iw',
-        '1': 'ˈ',
-        '2': 'ˌ'
-    };
+    // 置換ルールの設定（正規表現を使用）
+    const replacements = [
+        { pattern: /p'm/g, replacement: 'p\'ⁿ' },
+        { pattern: /t'n/g, replacement: 't\'ⁿ' },
+        { pattern: /k'n/g, replacement: 'k\'ⁿ' },
+        { pattern: /hng/g, replacement: 'ŋ̊' },
+        { pattern: /pm/g, replacement: 'pⁿ' },
+        { pattern: /bm/g, replacement: 'bⁿ' },
+        { pattern: /hm/g, replacement: 'm̥' },
+        { pattern: /f/g, replacement: 'ɸ' },
+        { pattern: /v/g, replacement: 'β' },
+        { pattern: /tn/g, replacement: 'tⁿ' },
+        { pattern: /dn/g, replacement: 'dⁿ' },
+        { pattern: /hn/g, replacement: 'n̥' },
+        { pattern: /hr/g, replacement: 'r̥' },
+        { pattern: /hl/g, replacement: 'l̥' },
+        { pattern: /c/g, replacement: 't͡s' },
+        { pattern: /dz/g, replacement: 'd͡z' },
+        { pattern: /ch/g, replacement: 't͡ʃ' },
+        { pattern: /j/g, replacement: 'd͡ʒ' },
+        { pattern: /sh/g, replacement: 'ʃ' },
+        { pattern: /zh/g, replacement: 'ʒ' },
+        { pattern: /kn/g, replacement: 'kⁿ' },
+        { pattern: /gn/g, replacement: 'gⁿ' },
+        { pattern: /ng/g, replacement: 'ŋ' },
+        { pattern: /gh/g, replacement: 'ɣ' },
+        { pattern: /q/g, replacement: 'ʔ' },
+        { pattern: /ia/g, replacement: 'ja' },
+        { pattern: /ai/g, replacement: 'aj' },
+        { pattern: /ua/g, replacement: 'wa' },
+        { pattern: /au/g, replacement: 'aw' },
+        { pattern: /e/g, replacement: 'ə' },
+        { pattern: /ie/g, replacement: 'jə' },
+        { pattern: /ei/g, replacement: 'əj' },
+        { pattern: /ue/g, replacement: 'wə' },
+        { pattern: /eu/g, replacement: 'əw' },
+        { pattern: /iú/g, replacement: 'ju' },
+        { pattern: /úi/g, replacement: 'uj' },
+        { pattern: /uí/g, replacement: 'wi' },
+        { pattern: /íu/g, replacement: 'iw' },
+        { pattern: /1/g, replacement: 'ˈ' },
+        { pattern: /2/g, replacement: 'ˌ' }
+    ];
 
     // 置換処理の実行
-    for (const [key, value] of Object.entries(replacements)) {
-        const regex = new RegExp(key, 'g');
-        text = text.replace(regex, value);
-    }
+    replacements.forEach(({ pattern, replacement }) => {
+        text = text.replace(pattern, replacement);
+    });
 
     // チェックボックスがオンになっている場合、頭にˈを追加
     if (document.getElementById('addAccent').checked) {
