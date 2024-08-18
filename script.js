@@ -52,17 +52,17 @@ function replaceText() {
 
     // チェックボックスがオンになっている場合、頭にˈを追加
     if (document.getElementById('addAccent').checked) {
-        // 改行やスペースで単語を分割し、それぞれの単語にアクセントマークを追加
+        // 改行やスペースで単語を分割
         text = text.split(/\s+/).map(word => {
             // =をˈに置換
-            word = word.replace('=', 'ˈ');
+            let newWord = word.replace('=', 'ˈ');
             // 残りの-を取り除く
-            word = word.replace(/-/g, '');
-            // 空でない場合にアクセントマークを追加
-            if (word.trim() !== '') {
-                return 'ˈ' + word;
+            newWord = newWord.replace(/-/g, '');
+            // =を含む単語にはˈを追加しない
+            if (newWord.includes('ˈ') || newWord.trim() === '') {
+                return newWord;
             }
-            return word;
+            return 'ˈ' + newWord;
         }).join(' ');
     } else {
         // =をˈに置換し、残りの-を取り除く
