@@ -1,13 +1,13 @@
 function replaceText() {
     let text = document.getElementById('inputText').value;
 
-    // 置換ルールの設定
+    // 置換ルールの設定（順番を調整）
     const replacements = {
-        'p\'m': 'p\'ⁿ',
-        't\'n': 't\'ⁿ',
-        'k\'n': 'k\'ⁿ',
-        'hng': 'ŋ̊',
-        'pm': 'pⁿ',
+        'p\'m': 'p\'ⁿ',   // 先にp'mを置換
+        't\'n': 't\'ⁿ',   // 先にt'nを置換
+        'k\'n': 'k\'ⁿ',   // 先にk'nを置換
+        'hng': 'ŋ̊',      // 先にhngを置換
+        'pm': 'pⁿ',       // 他の置換
         'bm': 'bⁿ',
         'hm': 'm̥',
         'f': 'ɸ',
