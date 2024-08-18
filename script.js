@@ -1,17 +1,19 @@
 function replaceText() {
     let text = document.getElementById('inputText').value;
 
-    // 置換ルールの設定
+    // 置換ルールの設定（順序を考慮して修正）
     const replacements = {
+        'p\'m': 'p\'ⁿ',
+        't\'n': 't\'ⁿ',
+        'k\'n': 'k\'ⁿ',
+        'hng': 'ŋ̊',
         'pm': 'pⁿ',
         'bm': 'bⁿ',
-        "p'm": "p'ⁿ",
         'hm': 'm̥',
         'f': 'ɸ',
         'v': 'β',
         'tn': 'tⁿ',
         'dn': 'dⁿ',
-        "t'n": "t'ⁿ",
         'hn': 'n̥',
         'hr': 'r̥',
         'hl': 'l̥',
@@ -23,8 +25,6 @@ function replaceText() {
         'zh': 'ʒ',
         'kn': 'kⁿ',
         'gn': 'gⁿ',
-        "k'n": "k'ⁿ",
-        'hng': 'ŋ̊',
         'ng': 'ŋ',
         'gh': 'ɣ',
         'q': 'ʔ',
