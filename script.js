@@ -51,5 +51,19 @@ function replaceText() {
         text = text.replace(regex, value);
     }
 
+    // チェックボックスがオンになっている場合、頭にˈを追加
+    if (document.getElementById('addAccent').checked) {
+        text = text.split(' ').map(word => {
+            // =をˈに置換
+            word = word.replace('=', 'ˈ');
+            // 残りの-を取り除く
+            word = word.replace(/-/g, '');
+            return 'ˈ' + word;
+        }).join(' ');
+    } else {
+        // =をˈに置換し、残りの-を取り除く
+        text = text.replace(/=/g, 'ˈ').replace(/-/g, '');
+    }
+
     document.getElementById('outputText').value = text;
 }
