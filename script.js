@@ -1,7 +1,7 @@
 function replaceText() {
     let text = document.getElementById('inputText').value;
 
-    // 置換ルールの設定（順序を考慮して修正）
+    // 置換ルールの設定
     const replacements = {
         'p\'m': 'p\'ⁿ',
         't\'n': 't\'ⁿ',
