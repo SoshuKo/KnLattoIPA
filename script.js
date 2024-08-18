@@ -3,9 +3,9 @@ function replaceText() {
 
     // 置換ルールの設定（正規表現を使用）
     const replacements = [
-        { pattern: /p'm/g, replacement: 'p\'ⁿ' },
-        { pattern: /t'n/g, replacement: 't\'ⁿ' },
-        { pattern: /k'n/g, replacement: 'k\'ⁿ' },
+        { pattern: /p’m/g, replacement: 'p\'ⁿ' },
+        { pattern: /t’n/g, replacement: 't\'ⁿ' },
+        { pattern: /k’n/g, replacement: 'k\'ⁿ' },
         { pattern: /hng/g, replacement: 'ŋ̊' },
         { pattern: /pm/g, replacement: 'pⁿ' },
         { pattern: /bm/g, replacement: 'bⁿ' },
