@@ -3,7 +3,7 @@ function replaceText() {
 
     // 置換ルールの設定（正規表現を使用）
     const replacements = [
-        { pattern: /p’m/g, replacement: 'p’ⁿ' },
+        { pattern: /p’m/g, replacement: 'p’ⁿ' }, // 右シングルクォートを使用
         { pattern: /t’n/g, replacement: 't’ⁿ' },
         { pattern: /k’n/g, replacement: 'k’ⁿ' },
         { pattern: /hng/g, replacement: 'ŋ̊' },
